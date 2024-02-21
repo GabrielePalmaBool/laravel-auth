@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])->name('projects.index');
+Route::get('/projects/create', [MainController::class, 'create'])->name('projects.create');
+Route::post('/projects/create', [MainController::class, 'store'])->name('projects.store');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
