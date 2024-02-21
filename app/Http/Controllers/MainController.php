@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Http\Requests\ProjectFormRequest;
 
 class MainController extends Controller
 {
@@ -34,7 +35,7 @@ class MainController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectFormRequest $request)
     {
         $data = $request -> all();
         $newProject = new Project();
@@ -82,7 +83,7 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectFormRequest $request, $id)
     {
         $project = Project::find($id);
         $data = $request -> all();
