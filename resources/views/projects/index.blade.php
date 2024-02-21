@@ -7,7 +7,9 @@
     <ol>
         @foreach ($projects as $project)
             <li> 
-                {{ $project -> titolo_progetto }}    
+                <a href="{{ route('projects.show', $project -> id) }}">
+                    {{ $project -> titolo_progetto }}
+                </a>   
             </li>
         @endforeach
     </ol>

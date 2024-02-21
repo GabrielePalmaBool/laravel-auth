@@ -18,7 +18,7 @@ use App\Http\Controllers\MainController;
 Route::get('/', [MainController::class, 'index'])->name('projects.index');
 Route::get('/projects/create', [MainController::class, 'create'])->name('projects.create');
 Route::post('/projects/create', [MainController::class, 'store'])->name('projects.store');
-
+Route::get('/projects/{id}', [MainController::class, 'show'])->name('projects.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
