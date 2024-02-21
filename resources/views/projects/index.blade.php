@@ -4,9 +4,11 @@
 @endsection
 @section('content')
     <h1>Lista progetti:</h1>
+    @auth  
     <div class="create my-4">
         <a href="{{ route('projects.create') }}">CREA NUOVO PROGETTO</a>
     </div>
+    @endauth
     <ol class="d-flex justify-content-around flex-wrap">
         @foreach ($projects as $project)
             <li class="mb-5"> 
