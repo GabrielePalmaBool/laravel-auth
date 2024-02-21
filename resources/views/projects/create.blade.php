@@ -13,6 +13,7 @@
     </ul>
 </div>
 @endif
+<div class="container">
     <form action="{{route('projects.store')}}" method="POST">
 
         @csrf
@@ -37,4 +38,5 @@
 
         <input type="submit" value="CREA">
     </form>
+</div>
 @endsection
