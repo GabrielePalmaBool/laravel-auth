@@ -9,7 +9,13 @@
             <li> 
                 <a href="{{ route('projects.show', $project -> id) }}">
                     {{ $project -> titolo_progetto }}
-                </a>   
+                </a>
+                <a href="{{ route('projects.edit', $project -> id) }}">Modifica</a>
+                <form action="{{ route('projects.destroy', $project -> id) }}" method="POST" onsubmit="return confirm('Confermare')">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="Rimuovi">
+                </form>
             </li>
         @endforeach
     </ol>

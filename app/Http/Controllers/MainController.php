@@ -40,13 +40,13 @@ class MainController extends Controller
         $newProject = new Project();
         $newProject -> nome_autore = $data['nome_autore'];
         $newProject -> titolo_progetto = $data['titolo_progetto'];
-        $newProject -> img_riferimento = '123';
+        $newProject -> img_riferimento = 'https://via.placeholder.com/640x480.png/00ccff?text=project';
         $newProject -> descrizione = $data['descrizione'];
         $newProject -> data_pubblicazione = $data['data_pubblicazione'];
 
         $newProject -> save();
 
-        return redirect() -> route('project.index', $newProject->id);
+        return redirect() -> route('projects.index', $newProject->id);
     }
 
     /**
@@ -71,7 +71,8 @@ class MainController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projects = Project::find($id);
+        return view('projects.update', compact('projects'));
     }
 
     /**
@@ -83,7 +84,17 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+        $data = $request -> all();
+
+        $project -> nome_autore = $data['nome_autore'];
+        $project -> titolo_progetto = $data['titolo_progetto'];
+        $project -> img_riferimento = 'https://via.placeholder.com/640x480.png/00ccff?text=project';
+        $project -> descrizione = $data['descrizione'];
+        $project -> data_pubblicazione = $data['data_pubblicazione'];
+
+        $project -> save();
+        return redirect()-> route('projects.show', $project->id);
     }
 
     /**
@@ -94,6 +105,8 @@ class MainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $project->delete();
+        return redirect()->route('projects.index');
     }
 }
